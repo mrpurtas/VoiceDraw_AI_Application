@@ -5,6 +5,7 @@ import transcriptor
 import painter
 import datetime
 
+#export PATH="/opt/homebrew/bin:$PATH"
 
 
 if "record_active" not in st.session_state:
@@ -71,12 +72,17 @@ with col_image:
         elif message["role"] == "user":
             with st.chat_message(name=message["role"], avatar="./icons/user_avatar.png"):
                 st.success(message["content"])
-
     if stop_btn:
         with st.chat_message(name="user", avatar="./icons/user_avatar.png"):
             with st.spinner("Sesiniz Çözümleniyor..."):
                 voice_prompt = transcriptor.transcribe_with_whisper(audio_file_name="voice_prompt.wav")
             st.success(voice_prompt)
+
+    # if stop_btn:
+    #     with st.chat_message(name="user", avatar="./icons/user_avatar.png"):
+    #         with st.spinner("Sesiniz Çözümleniyor..."):
+    #             voice_prompt = transcriptor.transcribe_with_whisper(audio_file_name="voice_prompt.wav")
+    #         st.success(voice_prompt)
 
         st.session_state.messages.append({"role": "user", "content": voice_prompt})
 
@@ -101,6 +107,3 @@ with col_image:
     
         st.session_state.messages.append({"role": "assistant", "content": image_file_name})
         st.session_state.latest_image = image_file_name
-#Buharla çalışan dev robotların, dişli çarklar ve bakır boruların arasında gezindiği, Victoria dönemi mimarisine sahip bir şehir.
-        #Işıltılı mantarların, büyülü yaratıkların ve antik ağaçların gizemli bir ormanda saklandığı, ay ışığının süzüldüğü bir manzara
-        #Renkli mercan resiflerinin, ışık saçan denizanası sürülerinin ve gizemli deniz kızlarının olduğu, su altı krallığı.

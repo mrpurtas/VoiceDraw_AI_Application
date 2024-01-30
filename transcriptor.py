@@ -1,6 +1,26 @@
-from openai import OpenAI
+import whisper
 import os
 from dotenv import load_dotenv
+
+
+#localde whisper kullanımı
+
+
+def transcribe_with_whisper(audio_file_name):
+    model = whisper.load_model("medium")
+    audio = whisper.load_audio(audio_file_name)
+    audio = whisper.pad_or_trim(audio)
+    result = model.transcribe(audio)
+    return result["text"]
+
+
+
+#API cağırısı ile whisper'ı kullanmak icin
+"""from openai import OpenAI
+import os
+from dotenv import load_dotenv
+import whisper
+
 
 load_dotenv()
 
@@ -21,7 +41,7 @@ def transcribe_with_whisper(audio_file_name):
         language="tr"
     )
 
-    return AI_generated_transcript.text
+    return AI_generated_transcript.text"""
 
 #whisperı api bazlı degıl yerele kurarak bedavaya kullanabılırız
-#FFMPEg kurulur(chocolatey ıle kurulur), acık kaynak whısper baska bı yerden cekılıp bılıgsayara kurulur ona ayrılacak hard dsık space ayırılmalı, base model kullanılır muhtemelen bu yuzden ama base model apıdekınden cok daha kotu calısır.
+#FFMPEg kurulur(chocolatey ıle kurulur), acık kaynak whısper baska bı yerden cekılıp bılıgsayara kurulur ona ayrılacak hard dsık space ayırılmalı, base model kullanılır muhtemelen bu yuzden ama base model apıdekınden cok daha kotu calısır, sistemizi gore medium ya da large kullanmak ısteyebılırız
