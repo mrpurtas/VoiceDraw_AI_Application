@@ -1,7 +1,7 @@
 streamlit
-pyaudio
 wave
 openai
 google.generativeai
 python-dotenv
 streamlit-audiorec
+whisper

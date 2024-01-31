@@ -231,7 +231,7 @@ with col_audio:
         st.audio(st.session_state.audio_data, format='audio/wav')
 
 with col_image:
-    st.subheader("Görsel Çıktılar")
+    st.subheader("Görsel Çıktılar2")
     
     # Display messages and images
     for message in st.session_state.messages:
