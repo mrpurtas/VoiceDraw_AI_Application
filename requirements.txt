@@ -4,3 +4,4 @@ wave
 openai
 google.generativeai
 python-dotenv
+streamlit-audiorec
